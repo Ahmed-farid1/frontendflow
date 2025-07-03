@@ -1,399 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <title>Portfolio</title>
-    <style>
-        .settings-container {
-            position: absolute; 
-            top: 10px; 
-            right: 10px; 
-            display: inline-block;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .settings-icon {
-            font-size: 24px;
-            color: black;
-            cursor: pointer;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      color: #000;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
 
-        summary {
-            list-style: none;
-        }
+    .settings-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: inline-block;
+    }
 
-        summary::-webkit-details-marker {
-            display: none;
-        }
+    .settings-icon {
+      font-size: 24px;
+      color: black;
+      cursor: pointer;
+    }
 
-        .settings-menu {
-            position: absolute;
-            top: 35px; 
-            right: 0; 
-            background-color: #f5f5f5;
-            list-style: none;
-            margin: 0;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
+    summary {
+      list-style: none;
+    }
 
-        details[open] .settings-menu {
-            display: block;
-        }
+    summary::-webkit-details-marker {
+      display: none;
+    }
 
-        .settings-menu li {
-            padding: 8px 12px;
-        }
+    .settings-menu {
+      position: absolute;
+      top: 35px;
+      right: 0;
+      background-color: #f5f5f5;
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
 
-        .settings-menu li a {
-            color: black;
-            text-decoration: none;
-            font-size: 14px;
-        }
+    details[open] .settings-menu {
+      display: block;
+    }
 
-        .settings-menu li:hover {
-            background-color: #e0e0e0;
-        }
+    .settings-menu li {
+      padding: 8px 12px;
+    }
 
-        body {
-            font-size: 16px;
-        }
+    .settings-menu li a {
+      color: black;
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
-            }
+    .settings-menu li:hover {
+      background-color: #e0e0e0;
+    }
 
-            .container {
-                flex-direction: column;
-            }
-        }
+    .header {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-        @media (max-width: 480px) {
-            body {
-                font-size: 12px;
-            }
+    .left-section {
+      flex: 1;
+    }
 
-            .container {
-                padding: 10px;
-            }
-        }
+    .left-section h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .left-section h1 span {
+      color: #007bff;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            color: #000;
-            background-color: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
+    .left-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
 
-        .header {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
+    .btn {
+      padding: 1.3em 3em;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-        .header .left-section {
-            flex: 1;
-        }
+    .btn:hover {
+      background-color: #0056b3;
+      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
+      transform: translateY(-7px);
+    }
 
-        .header .left-section h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .header .left-section h1 span {
-            color: #007bff;
-        }
+    .right-section img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10000px;
+    }
 
-        .header .left-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
+    .profile-card {
+      max-width: 1200px;
+      margin: 40px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-        .btn {
-            padding: 1.3em 3em;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-weight: 500;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 45px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-            outline: none;
-        }
+    .profile-card img {
+      width: 100%;
+      max-width: 600px;
+      flex: 1 1 100%;
+    }
 
-        .btn:hover {
-            background-color: #0056b3;
-            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-            color: #fff;
-            transform: translateY(-7px);
-        }
+    .profile-content {
+      flex: 1 1 100%;
+      padding: 20px;
+    }
 
-        .btn:active {
-            transform: translateY(-1px);
-        }
+    .profile-content h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
 
-        .header .right-section {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .profile-content p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
 
-        .header .right-section img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10000px;
-        }
+    .highlight {
+      color: #007bff;
+    }
 
-        .profile-card {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            background-color: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 40px 0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 14px;
+    }
 
-        .profile-card img {
-            width: 50%;
-        }
+    .info div {
+      flex: 1 1 45%;
+    }
 
-        .profile-content {
-            padding: 20px;
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .contact {
+      max-width: 1200px;
+      margin: 40px auto;
+      text-align: center;
+    }
 
-        .profile-content h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
 
-        .profile-content p {
-            font-size: 14px;
-            color: #333333;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+    .contact h2::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background-color: #007bff;
+      margin: 10px auto 20px;
+    }
 
-        .profile-content .highlight {
-            color: #007bff;
-        }
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
 
-        .info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
+    .contact-item {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 250px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
 
-        .info div {
-            margin-right: 20px;
-        }
+    .contact-item:hover {
+      transform: translateY(-10px);
+    }
 
-        .btn a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
+    .contact-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #007bff;
+    }
 
-        .btn a:hover {
-            background-color: #0056b3;
-        }
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      border-radius: 15px;
+      color: #212121;
+      background: #ffffff;
+      font-weight: 900;
+      font-size: 17px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.1);
+      transition: all 250ms;
+    }
 
-        .contact {
-            width: 100%;
-            max-width: 1200px;
-            text-align: center;
-            margin-top: 40px;
-        }
+    .button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      border-radius: 15px;
+      background-color: #212121;
+      z-index: -1;
+      transition: all 250ms;
+    }
 
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            position: relative;
-        }
+    .button:hover {
+      color: #ffffff;
+    }
 
-        .contact h2::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: #007bff;
-            margin: 10px auto 20px;
-        }
+    .button:hover::before {
+      width: 100%;
+    }
 
-        .contact .contact-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
+    .button a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .contact .contact-item {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
 
-        .contact .contact-item:hover {
-            transform: translateY(-10px);
-        }
+      .profile-card {
+        flex-direction: column;
+      }
 
-        .contact .contact-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #007bff;
-        }
+      .profile-card img,
+      .profile-content {
+        width: 100%;
+      }
 
-        .services .service-item p {
-            font-size: 0.9rem;
-            color: #333333;
-        }
+      .info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-        a {
-            text-decoration: none;
-            color: #000000;
-            font-weight: 1000; 
-        }
-        
-        a:hover {
-            color: darkblue; 
-        }
-        
-        .button {
-            padding: 15px 25px;
-            border: unset;
-            border-radius: 15px;
-            color: #212121;
-            z-index: 1;
-            background: #ffffff;
-            position: relative;
-            font-weight: 900;
-            font-size: 17px;
-            box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.1);
-            transition: all 250ms;
-            overflow: hidden;
-            text-decoration: none;
-        }
+      .contact-list {
+        flex-direction: column;
+        align-items: center;
+      }
 
-        .button::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0;
-            border-radius: 15px;
-            background-color: #212121;
-            z-index: -1;
-            box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.1);
-            transition: all 250ms;
-        }
-
-        .button:hover {
-            color: #ffffff;
-        }
-
-        .button:hover::before {
-            width: 100%;
-        }
-    </style>
+      .contact-item {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="settings-container">
-        <details>
-            <summary class="settings-icon">
-                <i class="fas fa-cog"></i>
-            </summary>
-            <ul class="settings-menu">
-                <li><a href="index.html">night mode</a></li>
-                <li><a href="">home</a></li>
-                <li><a href="">about</a></li>
-                <li><a href="">contact</a></li>
-            </ul>
-        </details>
-    </div>
-    <div class="header">
-        <div class="left-section">
-            <h1>
-                Hi There!<br>
-                I am <span>Developer</span>
-            </h1>
-            <p>I make the complex simple.</p>
-            <a href="https://wa.me/1557440535?text=Hello%20there!%20I%20want%20to%20connect%20with%20you." class="btn">Contact Me</a>
-        </div>
-        <div class="right-section">
-            <img src="6488f86b4acea4df0b6521fdbc245c6c.jpg" alt="">
-        </div>
-    </div>
+  <div class="settings-container">
+    <details>
+      <summary class="settings-icon"><i class="fas fa-cog"></i></summary>
+      <ul class="settings-menu">
+        <li><a href="index.html">night mode</a></li>
+        <li><a href="">home</a></li>
+        <li><a href="">about</a></li>
+        <li><a href="">contact</a></li>
+      </ul>
+    </details>
+  </div>
 
-    <div class="profile-card">
-        <img src="6488f86b4acea4df0b6521fdbc245c6c.jpg" alt="Profile Picture">
-        <div class="profile-content">
-            <div>
-                <h1><span class="highlight">Who am I?</span><br>I'm Ahmed farid, a Web Developer</h1>
-                <p>Hi there! I’m Ahmed farid, a passionate front-end web developer who specializes in crafting modern, visually appealing, and responsive designs. My mission is to combine creativity with technical expertise to build websites and applications that offer seamless user experiences.</p>
-            </div>
-            <div class="info">
-                <div><strong>Name:</strong> AHMED FARID</div>
-                <div><strong>Age:</strong> 15</div>
-                <div><strong>From:</strong> EGYPT</div>
-                <div><strong>Email:</strong>ahmedmahmoud55889@gmail.com</div>
-            </div>
-        </div>
+  <div class="header">
+    <div class="left-section">
+      <h1>Hi There!<br />I am <span>Developer</span></h1>
+      <p>I make the complex simple.</p>
+      <a href="https://wa.me/1557440535?text=Hello%20there!%20I%20want%20to%20connect%20with%20you." class="btn">Contact Me</a>
     </div>
+    <div class="right-section">
+      <img src="6488f86b4acea4df0b6521fdbc245c6c.jpg" alt="Developer" />
+    </div>
+  </div>
 
-    <div class="contact">
-        <h2>Contact</h2>
-        <div class="contact-list">
-            <div class="contact-item">
-                <h3>INSTAGRAM</h3>
-                <div class="button">
-                    <a href="https://www.instagram.com/ahmedfarid5047?igsh=MTkyM295NWo3MGl6dA%3D%3D&utm_source=qr">view</a>
-                </div>
-            </div>
-            <div class="contact-item">
-                <h3>FACEBOOK</h3>
-                <div class="button">
-                    <a href="https://www.facebook.com/share/14c71tJ6Fs/?mibextid=wwXIfr">view</a>
-                </div>
-            </div>
-        </div>
+  <div class="profile-card">
+    <img src="6488f86b4acea4df0b6521fdbc245c6c.jpg" alt="Profile Picture" />
+    <div class="profile-content">
+      <h1><span class="highlight">Who am I?</span><br />I'm Ahmed Farid, a Web Developer</h1>
+      <p>Hi there! I’m Ahmed Farid, a passionate front-end web developer who specializes in crafting modern, visually appealing, and responsive designs. My mission is to combine creativity with technical expertise to build websites and applications that offer seamless user experiences.</p>
+      <div class="info">
+        <div><strong>Name:</strong> AHMED FARID</div>
+        <div><strong>Age:</strong> 15</div>
+        <div><strong>From:</strong> EGYPT</div>
+        <div><strong>Email:</strong> ahmedmahmoud55889@gmail.com</div>
+      </div>
     </div>
+  </div>
+
+  <div class="contact">
+    <h2>Contact</h2>
+    <div class="contact-list">
+      <div class="contact-item">
+        <h3>INSTAGRAM</h3>
+        <div class="button">
+          <a href="https://www.instagram.com/ahmedfarid5047">view</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <h3>FACEBOOK</h3>
+        <div class="button">
+          <a href="https://www.facebook.com/share/14c71tJ6Fs/?mibextid=wwXIfr">view</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
