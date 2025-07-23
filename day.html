@@ -20,10 +20,10 @@
     }
 
     .settings-container {
-      position: absolute;
+      position: fixed;
       top: 10px;
       right: 10px;
-      display: inline-block;
+      z-index: 1000;
     }
 
     .settings-icon {
@@ -84,10 +84,11 @@
 
     .left-section {
       flex: 1;
+      min-width: 300px;
     }
 
     .left-section h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
@@ -125,6 +126,7 @@
 
     .right-section {
       flex: 1;
+      min-width: 300px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -132,8 +134,8 @@
 
     .right-section img {
       width: 100%;
-      max-width: 400px;
-      border-radius: 10000px;
+      max-width: 300px;
+      border-radius: 50%;
     }
 
     .profile-card {
@@ -282,11 +284,6 @@
         flex-direction: column;
       }
 
-      .profile-card img,
-      .profile-content {
-        width: 100%;
-      }
-
       .info {
         flex-direction: column;
         align-items: flex-start;
@@ -308,7 +305,7 @@
     <details>
       <summary class="settings-icon"><i class="fas fa-cog"></i></summary>
       <ul class="settings-menu">
-        <li><a href="index.html">night mode</a></li>
+        <li><a href="#">night mode</a></li>
         <li><a href="#">home</a></li>
         <li><a href="#">about</a></li>
         <li><a href="#">contact</a></li>
